@@ -18,6 +18,7 @@ var textures = {
 	"default": null,
 	"hurt": null
 }
+var knock_speed = KNOCK_SPEED
 
 func _ready():
 	textures.default = $Sprite.texture
@@ -46,8 +47,14 @@ func movement_loop():
 	if hitstun == 0:
 		motion = movedir.normalized() * speed()
 	else:
-		motion = knockdir.normalized() * KNOCK_SPEED
+		motion = knockdir.normalized() * knock_speed()
 	move_and_slide(motion, dir.FLOOR)
+
+func knock_speed():
+	return knock_speed
+
+func damage():
+	return DAMAGE
 
 func damage_loop():
 	if hitstun > 0:
@@ -63,12 +70,18 @@ func damage_loop():
 		else:
 			$Sprite.texture = textures.default
 
+	var hit = false
 	for area in $hitbox.get_overlapping_areas():
 		var body = area.get_parent()
-		if hitstun == 0 and body.get("DAMAGE") != null and body.get("TYPE") != TYPE:
-			health -= body.get("DAMAGE")
+		if hitstun == 0 && body.has_method("damage") && body.get("TYPE") != TYPE:
+			health -= body.damage()
 			hitstun = 10
 			knockdir = global_transform.origin - body.global_transform.origin
+			if body.has_method("impact_speed"):
+				knock_speed = body.impact_speed()
+			hit = true
+	if !hit:
+		knock_speed = KNOCK_SPEED
 
 func use_item(item):
 	var newitem = item.instance()

@@ -6,8 +6,15 @@ const DAMAGE = 0
 const PUSH_SPEED = 40
 const MAX_HEALTH = 5
 
+const SWORD_SCENE = preload("res://items/sword.tscn")
+
 var state = "default"
+var saved_state = "default"
 var keys = 0
+var beast_texture = null
+
+func _ready():
+	textures.beast = $Sprite.texture
 
 func _physics_process(delta):
 	match state:
@@ -15,6 +22,8 @@ func _physics_process(delta):
 			state_default()
 		"swing":
 			state_swing()
+		"beast":
+			state_beast()
 	keys = min(keys, 9)
 
 func pushing():
@@ -37,8 +46,49 @@ func state_default():
 	else:
 		anim_switch("idle")
 	
-	if Input.is_action_just_pressed("a"):
-		use_item(preload("res://items/sword.tscn"))
+	if state != "beast" && Input.is_action_just_pressed("a"):
+		use_item(SWORD_SCENE)
+	if Input.is_action_just_pressed("b"):
+		enable_beast_mode()
+
+func damage():
+	if state == "beast":
+		return 1000
+	return .damage()
+
+func impact_speed():
+	if state == "beast":
+		return 1200
+	return 125
+
+func damage_loop():
+	if state == "beast":
+		return
+	.damage_loop()
+
+func state_beast():
+	if beast_texture == null || beast_texture == "default":
+		beast_texture = "hurt"
+	else:
+		beast_texture = "default"
+	$Sprite.texture = textures[beast_texture]
+	state_default()
+
+func enable_beast_mode():
+	timed_state("beast", 10)
+
+func timed_state(new_state, seconds):
+	if $specialStateTimer.is_stopped():
+		print("enabling beast mode")
+		saved_state = state
+		state = new_state
+		$specialStateTimer.connect("timeout", self, "reset_state")
+		$specialStateTimer.start()
+
+func reset_state():
+	state = saved_state
+	$specialStateTimer.stop()
+	$specialStateTimer.disconnect("timeout", self, "reset_state")
 
 func controls_loop():
 	var left = Input.is_action_pressed("ui_left")

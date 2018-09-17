@@ -17,3 +17,5 @@ func destroy(animation):
 		get_parent().state = "default"
 	queue_free()
 
+func damage():
+	return DAMAGE

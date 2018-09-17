@@ -240,7 +240,7 @@ extents = Vector2( 6, 7 )
 custom_solver_bias = 0.0
 extents = Vector2( 7, 8 )
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -299,5 +299,12 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" index="0"]
 
 shape = SubResource( 14 )
+
+[node name="specialStateTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = true
+autostart = false
 
 

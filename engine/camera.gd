@@ -10,7 +10,6 @@ func _process(delta):
 	var x = floor(pos.x / 160) * 160
 	var y = floor(pos.y / 128) * 128
 	global_position = Vector2(x, y)
-	
 
 func body_entered(body):
 	if body.get("TYPE") == "ENEMY":

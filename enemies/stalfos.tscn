@@ -32,13 +32,14 @@ extents = Vector2( 6, 6 )
 custom_solver_bias = 0.0
 extents = Vector2( 7, 7 )
 
-[node name="stalfos" type="KinematicBody2D"]
+[node name="stalfos" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 3
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_edit_group_": true
 }

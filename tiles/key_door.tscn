@@ -11,7 +11,7 @@ extents = Vector2( 8, 16 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 7, 17 )
+extents = Vector2( 9, 17 )
 
 [node name="key_door" type="StaticBody2D"]
 
@@ -49,7 +49,6 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area" index="0"]
 
-visible = false
 shape = SubResource( 2 )
 
 

@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
-const MAX_HEALTH = 2
+const MAX_HEALTH = 1
 const TYPE = "ENEMY"
 const DAMAGE = 0.25
 const SPEED = 0
 const KNOCK_SPEED = 125
+
+const HEART_SCENE = preload("res://pickups/heart.tscn")
+const DEATH_SCENE = preload("res://enemies/enemy_death.tscn")
 
 var movedir = dir.CENTER
 var knockdir = dir.CENTER
@@ -52,9 +55,10 @@ func damage_loop():
 		$Sprite.texture = textures.hurt
 	else:
 		if TYPE == "ENEMY" and health <= 0:
-			var death = preload("res://enemies/enemy_death.tscn").instance()
-			get_parent().add_child(death)
-			death.global_transform = global_transform
+			var drop = randi() % 3
+			if drop == 0:
+				instance_scene(HEART_SCENE)
+			instance_scene(DEATH_SCENE)
 			queue_free()
 		else:
 			$Sprite.texture = textures.default
@@ -73,3 +77,9 @@ func use_item(item):
 		add_child(newitem)
 	else:
 		newitem.queue_free()
+
+func instance_scene(scene):
+	var new_scene = scene.instance()
+	new_scene.global_position = global_position
+	get_parent().add_child(new_scene)
+

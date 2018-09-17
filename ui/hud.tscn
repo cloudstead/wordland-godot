@@ -22,7 +22,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 default_font = SubResource( 2 )
 
-[node name="hud" type="CanvasLayer" index="0"]
+[node name="hud" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )

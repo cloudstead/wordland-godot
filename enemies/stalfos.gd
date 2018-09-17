@@ -1,6 +1,7 @@
 extends "res://engine/entity.gd"
 
 const SPEED = 40
+const DAMAGE = 0.25
 
 func _ready():
 	$anim.play("default")

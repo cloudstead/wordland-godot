@@ -1,9 +1,6 @@
-extends Area2D
+extends "res://pickups/pickup.gd"
 
-func _ready():
-	connect("body_entered", self, "pickup_key")
-
-func pickup_key(body):
+func do_pickup(body):
 	if body.name == "player" && body.get("keys") < 9:
 		body.keys += 1
 		queue_free()

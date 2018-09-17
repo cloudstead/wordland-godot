@@ -1,7 +1,7 @@
 extends Node2D
 
 const TYPE = "PLAYER"
-const DAMAGE = 1
+const DAMAGE = 0.5
 
 var maxAmount = 1
 

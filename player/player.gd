@@ -48,7 +48,7 @@ func state_default():
 	
 	if state != "beast" && Input.is_action_just_pressed("a"):
 		use_item(SWORD_SCENE)
-	if Input.is_action_just_pressed("b"):
+	if hitstun == 0 && Input.is_action_just_pressed("b"):
 		enable_beast_mode()
 
 func damage():

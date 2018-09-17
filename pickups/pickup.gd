@@ -1,6 +1,6 @@
 extends Node
 
-export (bool) var disappears = false
+export var disappears = false
 
 func _ready():
 	connect("body_entered", self, "do_pickup")

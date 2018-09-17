@@ -79,7 +79,6 @@ func enable_beast_mode():
 
 func timed_state(new_state, seconds):
 	if $specialStateTimer.is_stopped():
-		print("enabling beast mode")
 		saved_state = state
 		state = new_state
 		$specialStateTimer.connect("timeout", self, "reset_state")

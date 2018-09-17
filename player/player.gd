@@ -4,8 +4,10 @@ const TYPE = "PLAYER"
 const SPEED = 70
 const DAMAGE = 0
 const PUSH_SPEED = 40
+const MAX_HEALTH = 5
 
 var state = "default"
+var keys = 0
 
 func _physics_process(delta):
 	match state:
@@ -13,6 +15,7 @@ func _physics_process(delta):
 			state_default()
 		"swing":
 			state_swing()
+	keys = min(keys, 9)
 
 func pushing():
 	return is_on_wall() and test_move(transform, dir.REV_MOVE_MAP[spritedir])

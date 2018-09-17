@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const MAX_HEALTH = 2
 const TYPE = "ENEMY"
-const DAMAGE = 1
+const DAMAGE = 0.25
 const SPEED = 0
 const KNOCK_SPEED = 125
 
@@ -52,6 +52,9 @@ func damage_loop():
 		$Sprite.texture = textures.hurt
 	else:
 		if TYPE == "ENEMY" and health <= 0:
+			var death = preload("res://enemies/enemy_death.tscn").instance()
+			get_parent().add_child(death)
+			death.global_transform = global_transform
 			queue_free()
 		else:
 			$Sprite.texture = textures.default

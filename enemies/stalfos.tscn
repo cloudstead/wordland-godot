@@ -82,4 +82,11 @@ audio_bus_name = "Master"
 
 shape = SubResource( 3 )
 
+[node name="dirTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.6
+one_shot = false
+autostart = true
+
 

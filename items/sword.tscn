@@ -178,7 +178,7 @@ tracks/2/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 2, 6 )
+extents = Vector2( 4, 9 )
 
 [node name="sword" type="Node2D"]
 
@@ -230,6 +230,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area" index="0"]
 
 shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }

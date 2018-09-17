@@ -55,8 +55,8 @@ func damage_loop():
 		$Sprite.texture = textures.hurt
 	else:
 		if TYPE == "ENEMY" and health <= 0:
-			var drop = randi() % 3
-			if drop == 0:
+			var drop = randi() % 4
+			if drop != 0:
 				instance_scene(HEART_SCENE)
 			instance_scene(DEATH_SCENE)
 			queue_free()

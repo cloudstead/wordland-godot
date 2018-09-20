@@ -25,4 +25,5 @@ func _ready():
 	randomize()
 
 func rand():
+	# from inner to outer: pick random index; get key at index; return value for key
 	return REV_MOVE_MAP[REV_MOVE_MAP.keys()[ randi() % REV_MOVE_MAP.keys().size() ]]

@@ -6,7 +6,7 @@ func _ready():
 	$JoinApi.api_init(self)
 
 func handle_api_response (room):
-	print("joined room: room={room}".format({ "room": JSON.print(room) }))
+	print("joined room: room={room}".format({ "room": room.room }))
 
 func _physics_process(delta):
 	var bodies = get_overlapping_bodies()

@@ -8,5 +8,5 @@ func _physics_process(delta):
 		if body.TYPE == "PLAYER":
 			if apiSession.session == null:
 				$LoginApi.login()
-			else:
-				print("already logged in")
+#			else:
+#				print("already logged in")

@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="wordland.io"
-run/main_scene="res://areas/test.tscn"
+run/main_scene="res://wordland/wboard.tscn"
 config/icon="res://icon.png"
 run/name="wordland.io"
 

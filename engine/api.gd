@@ -1,15 +1,18 @@
 extends Node
 
 const SESSION_SCENE = 'ApiSession'
+
 const HEADER_JSON = 'Content-Type: application/json'
 const HEADER_NAME_WL_API = "x-wordland-api-key"
+
 const DEFAULT_API_BASE = "http://127.0.0.1:9091/api/"
+const USE_SSL = false
 
 static func base_uri():
 	return DEFAULT_API_BASE
 
 static func use_ssl():
-	return false
+	return USE_SSL
 
 static func api_request_headers(http):
 	var apiSession = session(http)
